@@ -151,9 +151,8 @@ function getGenreName(genreId) {
 }
 
 
-// user watchlist and likes by fetching session id
+// user watch list and likes by fetching session id
 // const guestSessionId = "d136fefeaa6911b8780ec034d3a6825d";//changes every 24hours, Replace with your guest session ID
-
 
 // Fetch Liked (Rated) Movies
 
