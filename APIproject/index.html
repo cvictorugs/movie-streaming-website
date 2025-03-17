@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OMDb Movie Search</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Include Axios from CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <main class="mainb">
+      <nav class="dbars">
+          <section class="fsb">
+            <a href="#"><i class="fa-solid fa-bars" id="opennav"></i></a>
+            <h4>SaintStream</h4>
+          </section>
+          <ul class="ssb">
+            <li class="home"><a href="./newgit/web-dev-projects/index.html">Home</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Movie Release</a></li>
+            <li><a href="#">Forum</a></li>
+          </ul>
+          <section class="tsb">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <div>
+              <button class="btn1">Sign up</button>
+              <button class="btn2">Login</button>
+            </div>
+          </section>
+      </nav>
+      
+      <div class="tosearch">
+          <input type="text" id="searchText" placeholder="Enter movie name" />
+          <button onclick="searchMovies()">Search</button>
+      </div>
+
+
+      <article class="maina">
+        <div class="themovie">
+          <p>Movie</p>
+        </div>
+        <div class="writeup">
+          <h2>Star Wars: The force Awaken</h2>
+          <p class="p1">2n4()m - 2002 . February . Augusr6</p>
+          <p class="p2">The third season of the American television series The Mandarian
+            stars pedro Parcel as the tase character in bounty hunter bringing to 
+            Mandacro to random hin best trarepression with his adopted son Grogu
+            and bnrg aided on their journey by bedcew Mandacrism Bo.Katen Krpze
+          </p>
+        </div>
+        <div class="btnall">
+          <button class="btn3">
+            <i class="fa-solid fa-circle-play"></i>
+            <p>Watch Trailer</p>
+          </button>
+          <button class="btn4">
+            <i class="fa-regular fa-bookmark"></i>
+            <p>Add Watchlist</p>
+          </button>
+        </div>
+        <div class="empty">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </article>
+
+      <header class="logos">
+        <a href="#"><img src="./changed.png" alt="" width="70px" height="30px"></a>
+        <a href="#"><img src="./BrandAssets_Logos_01-Wordmark.jpg" alt="" width="90px" height="40px"></a>
+        <a href="#"><img src="./images.jpg" alt="" width="70px" height="40px"></a>
+        <a href="#"><img src="./images.png" alt="" width="70px" height="30px"></a>
+        <a href="#"><img src="./Screenshot 2025-03-03 185408.png" alt="" width="60px" height="20px"></a>
+        <a href="#"><img src="./Untitleds.png" alt="" width="60px" height="20px"></a>
+        <div class="logoslast">
+          <span></span>
+          <p>NATIONAL CAOCADECNHJJ</p>
+          <i class="fa-solid fa-circle-chevron-right"></i>
+        </div>
+      </header>
+    </main>
+    <footer class="laslas">
+      <div>
+        <p>Just Release</p>
+      </div>
+      <div class="dima">
+        <img src="./t1.jpg" alt="" width="125px" height="130px" class="lasima">
+        <img src="./t2.jpg" alt="" width="125px" height="130px" class="lasima">
+        <img src="./t3.jpg" alt="" width="125px" height="130px" class="lasima">
+        <img src="./t4.jpg" alt="" width="125px" height="130px" class="lasima">
+        <img src="./t5d.jpg" alt="" width="125px" height="130px" class="lasima" id="remove">
+      </div>
+    </footer>
+    <mark id="navcontent">
+      <div id="closenav">
+        <a href="#"><i class="fa-solid fa-xmark"></i></a>
+      </div>
+      <div class="lists">
+        <a href="/newgit/index.html"><p>Movies</p></a>
+        <a href="#"><p>Added lists</p</a>
+        <a href="#"><p>profile</p></a>
+      </div>
+    </mark>
+    <div id="result"></div>
+  
+  <!-- Include the JavaScript file -->
+  <script src="main.js"></script>
+</body>
+</html>
