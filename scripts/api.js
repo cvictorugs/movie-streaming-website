@@ -55,6 +55,7 @@ continueWatchingMovieTitles.forEach(title => {
         const movie = data.results[0]; // Get the first result
         const imageUrl = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
 
+        
         // Create an image element and append it to the div
         const img = document.createElement("img");
         img.src = imageUrl;
