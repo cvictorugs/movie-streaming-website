@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background: url(/Untitled.jpg) no-repeat center  center / cover;
+    background: url(Untitled.jpg) no-repeat center  center / cover;
   }
   
   .movie {
@@ -25,12 +25,13 @@ body {
     display: flex;
     gap: 1cm;
     justify-content: center;
+    width: 100%;
     input{
-        padding: 10px;
+        padding: 4px;
         border-radius: 0.5rem;
     }
     button{
-        padding: 10px;
+        padding: 4px;
         border-radius: 0.5rem;
     }
     button:hover{
@@ -45,6 +46,7 @@ body {
        a{
         margin-top: 14%;
         font-size: 30px;
+        text-decoration: none;
        }
        h4{
         color: rgb(196, 199, 199);
@@ -106,7 +108,9 @@ body {
 
 
 .mainb{
-    background: url('./starwars_uusi_vaaka.jpg') no-repeat center center / cover;
+    background-image: url('./starwars_uusi_vaaka.jpg');
+    background-size: cover;
+    background-position: center;
     margin: 5%;
 }
 .maina{
@@ -207,15 +211,10 @@ body {
 }
 
 .logos{
-    background: url('./Untitled.jpg') no-repeat center center / cover;
    display: flex;
    align-items: center;
-   gap: 0.2cm;
-   opacity: 0.8;
-   padding-bottom: 10px;
-   a{
-    margin: -16% 2%;
-   }
+   justify-content: space-between;
+   margin: -2% 10%;
    .logoslast{
         display: flex;
         gap: 0.05cm;
@@ -230,14 +229,18 @@ body {
             width: 1%;
             margin-top: 6%;
         }
-        i{
+        button{
             color: rgb(48, 48, 48);
             margin-left: 40%;
+            background: url(/APIproject/Untitled.jpg) no-repeat center  center / cover;
+            border: none;
+            cursor: pointer;
         }
    }
 }
 
 .laslas{
+
     p{
         color: #fff;
         margin: 5%;
@@ -245,7 +248,13 @@ body {
         font-size: larger;
     }
     .dima{
-        margin-left: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        img{
+            margin-left: -10%;
+            margin-right: 15%;
+        }
     }
 }
 
@@ -287,36 +296,22 @@ body {
 
 @media (min-width: 320px){
     .mainb{
+        font-size: 20px;
         .dbars{
             .fsb{
-                #opennav{
-                    margin-top: 25%;
-                    display: block !important;
-                }
                 h4{
-                    margin: 25% 30%;
+                    margin: 25px;
                 }
             }
             .ssb{
-                display: none !important;
+                display: flex;
+                
             }
-        }
-        .logos{
-            margin-left: 8%;
         }
     }
     .tosearch{
         #searchText{
-            width: 50%;
-        }
-    }
-    #navcontent{
-        margin-top: -80%;
-        margin-left: -2%;
-        height: 100%;
-        .lists{
-            margin-left: 30%;
-            line-height: 50px;
+            width: 35%;
         }
     }
     .laslas{
@@ -326,88 +321,25 @@ body {
     }
 }
 
-@media (min-width: 425px) {
-    .mainb{
+@media (max-width: 900px) {
+    .mainb {
+        font-size: 18px;
         .dbars{
             .fsb{
-                #opennav{
-                    display: none;
-                }
                 h4{
-                    margin: 25% 30%;
+                    margin: 19px;
                 }
             }
-            .ssb{
-                display: flex;
-            }
-        }
-        .logos{
-            margin-left: 8%;
         }
     }
-}
-/*
-@media (min-width: 768px){
-    .mainb{
-        .dbars{
-            .ssb{
-                display: flex;
-            }
-            .ssb{
-                margin-top:  3.5%;
-            }
-        }
-    }
-    #navcontent{
-        margin-top: -87.1%;
-        margin-left: -3%;
-        height: 100.7%;
-    }
-}
-@media (min-width: 820px) and (min-width: 1024){
-    .mainb{
-        .dbars{
-            .fsb{
-                #opennav{
-                    margin-top: 20%;
-                }
-                h4{
-                    margin: 23% 10%;
-                }
-            }
-            .ssb{
-                display: flex;
-                margin-top:  3.5%;
-            }
-        }
-        .logos{
-            margin-left: 2%;
-        }
-    }
-    .laslas{
-        .dima{
-            margin-left: 10%;
-        }
-    }
-    .tosearch{
-        margin-left: 4%;
-        #searchText{
+    .tosearch {
+        #searchText {
             width: 50%;
         }
     }
-    #navcontent{
-        margin-top: -90%;
-        margin-left: -3%;
-        height: 101%;
-    }
-}
-
-@media (min-width: 853px){
-    body{
-        #navcontent{
-            margin-top: -87%;
-            margin-left: -3%;
-            height: 100%;
+    .laslas {
+        .dima {
+            margin-left: 5%; 
         }
     }
-} */
+}
