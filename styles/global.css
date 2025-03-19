@@ -23,6 +23,7 @@ section > p{
     display: grid;
     /* grid-template-rows: repeat(2,1fr); */
     /* grid-template-rows: minmax(500px, 1fr) auto auto auto auto ; */
+    grid-template-rows:  1fr auto auto auto auto ;
     grid-template-rows:  1fr auto auto auto auto auto;
     
     section{
@@ -46,6 +47,7 @@ section > p{
     
 
     header{
+        background-color: rgba(26, 10, 10, 0.219);
         background-color: rgba(26, 10, 10, 0.527);
         display: flex;
         justify-content: space-between;
@@ -69,6 +71,19 @@ section > p{
 }
 
 #popular-movies-ctn{
+
+    #popular-movies{
+        background-color: red;
+    }
+}
+#recent-releases-ctn{
+
+    #recent-releases{
+        display: flex;
+        /* grid-area: .5rem; */
+    }
+}
+
     /* height: 100%; */
     /* width: 100%; avoid setting widths on auto columns*/
 
@@ -78,7 +93,7 @@ section > p{
         grid-template-columns: repeat(3,25rem);
         
     }
-}
+
 #recent-releases-ctn{
     /* display: flex; */
     /* flex-direction: row; */
@@ -141,13 +156,10 @@ section > p{
 
     }
 }
-
-
-
+/* 
 #watchlist{
 
-    }
-
+    } */
 /* section{
     height: fit-content;
     width: 100%;
