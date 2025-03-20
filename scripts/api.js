@@ -1,5 +1,6 @@
 const movieApiKey = "bb62839"; // Your OMDb API key
 const movieTitle = "The Mandalorian"; // Change this to any movie you want
+const tmdbApiKey = "954e12387f34cb6be91a892fc28498d8"; // Replace with your actual API key
 
 async function fetchMoviePoster() {
   try {
@@ -89,7 +90,6 @@ continueWatchingMovieTitles.forEach(title => {
 //     })
 //     .catch(error => console.error("Error fetching company logo:", error));
 // });
-// const tmdbApiKey = "YOUR_API_KEY"; // Replace with your actual API key
 const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
 
 popularMoviesIds.forEach(movieId => {
@@ -140,82 +140,82 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&lang
   .catch(error => console.error("Error fetching recent movies:", error));
 
 // converts genre IDs into genre names
-function getGenreName(genreId) {
-  const genres = {
-    28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy",
-    80: "Crime", 18: "Drama", 14: "Fantasy", 27: "Horror",
-    9648: "Mystery", 10749: "Romance", 878: "Science Fiction", 53: "Thriller"
-  };
-  return genres[genreId] || "Unknown";
-}
+// function getGenreName(genreId) {
+//   const genres = {
+//     28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy",
+//     80: "Crime", 18: "Drama", 14: "Fantasy", 27: "Horror",
+//     9648: "Mystery", 10749: "Romance", 878: "Science Fiction", 53: "Thriller"
+//   };
+//   return genres[genreId] || "Unknown";
+// }
 
 // explore genre
 
 
 // Map genre names to TMDB genre IDs
-const genreMap = {
-    superhero: 28, // Action (since TMDB doesn't have a "Superhero" genre)
-    drama: 18,
-    sitcom: 35, // Comedy as a substitute
-    thriller: 53,
-    comedy: 35,
-    fantasy: 14
-};
+// const genreMap = {
+//     superhero: 28, // Action (since TMDB doesn't have a "Superhero" genre)
+//     drama: 18,
+//     sitcom: 35, // Comedy as a substitute
+//     thriller: 53,
+//     comedy: 35,
+//     fantasy: 14
+// };
 
 
 // Function to fetch and display movies based on genre
-async function fetchMovieByGenre(genre) {
-    const genreId = genreMap[genre]; // Get TMDB genre ID
+// async function fetchMovieByGenre(genre) {
+//     const genreId = genreMap[genre]; // Get TMDB genre ID
 
-    if (!genreId) {
-        console.error("Invalid genre:", genre);
-        return;
-    }
+//     if (!genreId) {
+//         console.error("Invalid genre:", genre);
+//         return;
+//     }
 
-    try {
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
-        const data = await response.json();
+//     try {
+//         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
+//         const data = await response.json();
 
-        const genreMoviesContainer = document.getElementById("genre-movies");
-        genreMoviesContainer.innerHTML = ""; // Clear previous movies
+//         const genreMoviesContainer = document.getElementById("genre-movies");
+//         genreMoviesContainer.innerHTML = ""; // Clear previous movies
 
-        data.results.forEach(movie => {
-            if (movie.poster_path) {
-                const movieCard = document.createElement("div");
-                movieCard.classList.add("movie-card"); // Add styling class
+//         data.results.forEach(movie => {
+//             if (movie.poster_path) {
+//                 const movieCard = document.createElement("div");
+//                 movieCard.classList.add("movie-card"); // Add styling class
 
-                movieCard.innerHTML = `
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                    <p><strong>${movie.title}</strong></p>
-                    <p>⭐ ${movie.vote_average}</p>
-                `;
+//                 movieCard.innerHTML = `
+//                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+//                     <p><strong>${movie.title}</strong></p>
+//                     <p>⭐ ${movie.vote_average}</p>
+//                 `;
 
-                genreMoviesContainer.appendChild(movieCard);
-            }
-        });
+//                 genreMoviesContainer.appendChild(movieCard);
+//             }
+//         });
 
-    } catch (error) {
-        console.error("Error fetching movies by genre:", error);
-    }
-}
+//     } catch (error) {
+//         console.error("Error fetching movies by genre:", error);
+//     }
+// }
 
 // Event Listener for Genre Buttons
-document.querySelectorAll(".genre-btn").forEach(button => {
-    button.addEventListener("click", (event) => {
-        // Remove active class from all buttons
-        document.querySelectorAll(".genre-btn").forEach(btn => btn.classList.remove("active"));
+// document.querySelectorAll(".genre-btn").forEach(button => {
+//     button.addEventListener("click", (event) => {
+//         // Remove active class from all buttons
+//         document.querySelectorAll(".genre-btn").forEach(btn => btn.classList.remove("active"));
 
-        // Add active class to clicked button
-        event.target.classList.add("active");
+//         // Add active class to clicked button
+//         event.target.classList.add("active");
 
-        // Get the selected genre and fetch movies
-        const selectedGenre = event.target.dataset.genre;
-        fetchMovieByGenre(selectedGenre);
-    });
-});
+//         // Get the selected genre and fetch movies
+//         const selectedGenre = event.target.dataset.genre;
+//         fetchMovieByGenre(selectedGenre);
+//     });
+// });
 
 // Fetch default genre movies (Superhero) on page load
-fetchMovieByGenre("superhero");
+// fetchMovieByGenre("superhero");
 
 
 // watchlist
