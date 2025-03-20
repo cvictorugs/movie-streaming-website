@@ -93,12 +93,12 @@ continueWatchingMovieTitles.forEach(title => {
 //     .catch(error => console.error("Error fetching company logo:", error));
 // });
 // const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
-const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
+// const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
 
-popularMoviesIds.forEach(movieId => {
-  fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
-    .then(response => response.json())
-    .then(data => {
+// popularMoviesIds.forEach(movieId => {
+//   fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+//     .then(response => response.json())
+//     .then(data => {
 // const tmdbApiKey = "YOUR_API_KEY"; // Replace with your actual API key
 const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
 
@@ -130,45 +130,50 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language
   .then(data => {
     const moviesContainer = document.getElementById("recent-releases");
 
-    data.results.forEach(movie => {
-      if (movie.poster_path) {
-        const movieCard = document.createElement("div");
-        movieCard.style.border = "1px solid #ccc";
-        // movieCard.style.padding = "10px";
-        movieCard.style.margin = "10px";
-        // movieCard.style.width = "200px";
-        // movieCard.style.width = "100%";
-        movieCard.style.borderRadius = "8px";
-        movieCard.style.backgroundColor = "#f9f9f9";
-        // movieCard.style.textAlign = "center";
+      data.results.forEach(movie => {
+        if (movie.poster_path) {
+          const movieCard = document.createElement("div");
+          movieCard.style.border = "1px solid #ccc";
+          // movieCard.style.padding = "10px";
+          movieCard.style.margin = "10px";
+          // movieCard.style.width = "200px";
+          // movieCard.style.width = "100%";
+          movieCard.style.borderRadius = "8px";
+          movieCard.style.backgroundColor = "#f9f9f9";
+          // movieCard.style.textAlign = "center";
 
-        // Movie Poster
-        const img = document.createElement("img");
-        img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-        img.alt = movie.title;
-        img.style.width = "100%";
-        img.style.borderRadius = "5px";
+          // Movie Poster
+          const img = document.createElement("img");
+          img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+          img.alt = movie.title;
+          img.style.width = "100%";
+          img.style.borderRadius = "5px";
 
-        // Movie Title
-        const title = document.createElement("h4");
-        title.innerText = movie.title;
+          // Movie Title
+          const title = document.createElement("h4");
+          title.innerText = movie.title;
 
-        // Movie Rating
-        const rating = document.createElement("p");
-        rating.innerText = `⭐ Rating: ${movie.vote_average.toFixed(1)}`;
+          // Movie Rating
+          const rating = document.createElement("p");
+          rating.innerText = `⭐ Rating: ${movie.vote_average.toFixed(1)}`;
 
-        // Movie Release Date
-        const releaseDate = document.createElement("p");
-        releaseDate.innerText = `📅 Release: ${movie.release_date}`;
+          // Movie Release Date
+          const releaseDate = document.createElement("p");
+          releaseDate.innerText = `📅 Release: ${movie.release_date}`;
 
-        // Append elements to card
-        movieCard.appendChild(img);
-        movieCard.appendChild(title);
-        movieCard.appendChild(rating);
-        movieCard.appendChild(releaseDate);
+          // Append elements to card
+          movieCard.appendChild(img);
+          movieCard.appendChild(title);
+          movieCard.appendChild(rating);
+          movieCard.appendChild(releaseDate);
 
-        // Append movie card to container
-        moviesContainer.appendChild(movieCard);
+          // Append movie card to container
+          moviesContainer.appendChild(movieCard);
+        }
+      }
+    )
+  })
+;
 
 // recent releases
 fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&language=en-US&page=1`)
@@ -199,82 +204,82 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&lang
 
 // fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
 // converts genre IDs into genre names
-function getGenreName(genreId) {
-  const genres = {
-    28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy",
-    80: "Crime", 18: "Drama", 14: "Fantasy", 27: "Horror",
-    9648: "Mystery", 10749: "Romance", 878: "Science Fiction", 53: "Thriller"
-  };
-  return genres[genreId] || "Unknown";
-}
+// function getGenreName(genreId) {
+//   const genres = {
+//     28: "Action", 12: "Adventure", 16: "Animation", 35: "Comedy",
+//     80: "Crime", 18: "Drama", 14: "Fantasy", 27: "Horror",
+//     9648: "Mystery", 10749: "Romance", 878: "Science Fiction", 53: "Thriller"
+//   };
+//   return genres[genreId] || "Unknown";
+// }
 
 // explore genre
 
 
 // Map genre names to TMDB genre IDs
-const genreMap = {
-    superhero: 28, // Action (since TMDB doesn't have a "Superhero" genre)
-    drama: 18,
-    sitcom: 35, // Comedy as a substitute
-    thriller: 53,
-    comedy: 35,
-    fantasy: 14
-};
+// const genreMap = {
+//     superhero: 28, // Action (since TMDB doesn't have a "Superhero" genre)
+//     drama: 18,
+//     sitcom: 35, // Comedy as a substitute
+//     thriller: 53,
+//     comedy: 35,
+//     fantasy: 14
+// };
 
 
 // Function to fetch and display movies based on genre
-async function fetchMovieByGenre(genre) {
-    const genreId = genreMap[genre]; // Get TMDB genre ID
+// async function fetchMovieByGenre(genre) {
+//     const genreId = genreMap[genre]; // Get TMDB genre ID
 
-    if (!genreId) {
-        console.error("Invalid genre:", genre);
-        return;
-    }
+//     if (!genreId) {
+//         console.error("Invalid genre:", genre);
+//         return;
+//     }
 
-    try {
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
-        const data = await response.json();
+//     try {
+//         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
+//         const data = await response.json();
 
-        const genreMoviesContainer = document.getElementById("genre-movies");
-        genreMoviesContainer.innerHTML = ""; // Clear previous movies
+//         const genreMoviesContainer = document.getElementById("genre-movies");
+//         genreMoviesContainer.innerHTML = ""; // Clear previous movies
 
-        data.results.forEach(movie => {
-            if (movie.poster_path) {
-                const movieCard = document.createElement("div");
-                movieCard.classList.add("movie-card"); // Add styling class
+//         data.results.forEach(movie => {
+//             if (movie.poster_path) {
+//                 const movieCard = document.createElement("div");
+//                 movieCard.classList.add("movie-card"); // Add styling class
 
-                movieCard.innerHTML = `
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                    <p><strong>${movie.title}</strong></p>
-                    <p>⭐ ${movie.vote_average}</p>
-                `;
+//                 movieCard.innerHTML = `
+//                     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+//                     <p><strong>${movie.title}</strong></p>
+//                     <p>⭐ ${movie.vote_average}</p>
+//                 `;
 
-                genreMoviesContainer.appendChild(movieCard);
-            }
-        });
+//                 genreMoviesContainer.appendChild(movieCard);
+//             }
+//         });
 
-    } catch (error) {
-        console.error("Error fetching movies by genre:", error);
-    }
-}
+//     } catch (error) {
+//         console.error("Error fetching movies by genre:", error);
+//     }
+// }
 
 // Event Listener for Genre Buttons
-document.querySelectorAll(".genre-btn").forEach(button => {
-    button.addEventListener("click", (event) => {
-        // Remove active class from all buttons
-        document.querySelectorAll(".genre-btn").forEach(btn => btn.classList.remove("active"));
+// document.querySelectorAll(".genre-btn").forEach(button => {
+//     button.addEventListener("click", (event) => {
+//         // Remove active class from all buttons
+//         document.querySelectorAll(".genre-btn").forEach(btn => btn.classList.remove("active"));
 
-        // Add active class to clicked button
-        event.target.classList.add("active");
+//         // Add active class to clicked button
+//         event.target.classList.add("active");
 
-        // Get the selected genre and fetch movies
-        const selectedGenre = event.target.dataset.genre;
-        fetchMovieByGenre(selectedGenre);
-    });
-});
+//         // Get the selected genre and fetch movies
+//         const selectedGenre = event.target.dataset.genre;
+//         fetchMovieByGenre(selectedGenre);
+//     });
+// });
 
-// Fetch default genre movies (Superhero) on page load
-fetchMovieByGenre("superhero");
+// // Fetch default genre movies (Superhero) on page load
+// fetchMovieByGenre("superhero");
 
 
 // watchlist
