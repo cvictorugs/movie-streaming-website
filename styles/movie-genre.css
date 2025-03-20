@@ -1,0 +1,76 @@
+/* Explore Genre Section */
+#explore-genre {
+    padding: 40px 20px;
+    color: white;
+}
+
+#hero-genre {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    border-radius: 10px;
+}
+
+.movie-info {
+    position: relative;
+    max-width: 500px;
+    z-index: 2;
+}
+
+.play-btn, .watchlist-btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.play-btn {
+    background: #14db68;
+    color: white;
+    border-radius: 5px;
+}
+
+.watchlist-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+/* Genre Selection Buttons */
+#genre-buttons {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scrollbar-width: none;
+}
+
+.genre-btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 5px;
+}
+
+.genre-btn.active {
+    background: #14db68;
+}

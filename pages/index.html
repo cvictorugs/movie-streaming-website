@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/global.css">
+        <link rel="stylesheet" href="../styles/movie-genre.css">
+        <title>Movie Streaming Website</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="movie-slideshow">
+                <!--change the streamiffy folder in anchor tag  to discover-movies-->
+                 <header>
+                    <div>SaintStream</div>
+                    <div>
+                        <ul>
+                            <li>Home</li>
+                            <li><a href="../StreamiFFy/index.html">Discover</a></li>
+                            <li>Movie Release</li>
+                            <li>Forum</li>
+                            <li>About</li>
+                        </ul>
+                    </div>
+                    <div id="header-icons">
+                        <img src="../assets/images/icons/material-symbols-light--search-rounded.svg" alt="search icon">
+                        <img src="../assets/images/icons/carbon--notification.svg" alt="notification icon">
+                        <img src="../assets/images/icons/mdi-light--bookmark.svg" alt="">
+                    </div>
+                </header> 
+                
+                
+            </div>
+            <!-- company logos -->
+            <section id="logos"><!-- <img width="100" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="Netflix Logo"> --></section>
+
+            <!-- watch from where you left off -->
+            <section id="continue-watching"> <p>Continue Watching</p>
+
+            </section>
+
+            <!-- popular movies of the week   TRY USING AN ORDERED LIST TO GIVE EACH IMAGE A NUMBER!-->
+            <section id="popular-movies-ctn"> <p>Popular for the week</p> <div id="popular-movies"> </div> </section>
+            
+            <!-- recently released movies -->
+            <section id="recent-releases-ctn"> <p>Just Released</p> <div id="recent-movies"></div> </section>
+
+            <!-- user's watchlist -->
+            <section id="watchlist"> 
+                <p>Your Watchlist</p>
+                
+            </section>
+
+            <!-- liked movies -->
+            <section id="likedMoviesCtn">
+                <p>Your Likes</p>
+                <div id="liked-movies"></div>
+            </section>
+
+            <!-- explore genre -->
+            <section id="explore-genre">
+                <p>Explore by the genre</p>
+                <div id="genre-buttons">
+                    <button class="genre-btn active" data-genre="superhero">Superhero</button>
+                    <button class="genre-btn" data-genre="drama">Drama</button>
+                    <button class="genre-btn" data-genre="sitcom">Sitcom</button>
+                    <button class="genre-btn" data-genre="thriller">Thriller</button>
+                    <button class="genre-btn" data-genre="comedy">Comedy</button>
+                    <button class="genre-btn" data-genre="fantasy">Fantasy</button>
+                </div>
+                <div id="genre-movies"></div> <!-- Movies will be shown here -->
+            </section>
+        </div>
+        <script src="../scripts/api.js"></script>
+    </body>
+</html>
