@@ -22,7 +22,6 @@ async function fetchMoviePoster() {
 }
 fetchMoviePoster();
 // api key from TMDB movies
-const tmdbApiKey = "954e12387f34cb6be91a892fc28498d8";
 
 // handles the company logos
 const companyIds = [213, 2, 3268, 1, 3, 7521, 420, 25, 20580, 4, 34, 33, 174]; // Add more IDs as needed
@@ -72,7 +71,6 @@ continueWatchingMovieTitles.forEach(title => {
 });
 
 // handles the popular movies for the week
-// const popularMovies = "954e12387f34cb6be91a892fc28498d8";
 // const popularMoviesIds = [213, 2, 3268, 1, 3, 7521, 420, 25, 20580, 4, 34, 33, 174]; // Add more IDs as needed
 
 // popularMoviesIds.forEach(popularMoviesId => {
@@ -150,6 +148,108 @@ function getGenreName(genreId) {
   };
   return genres[genreId] || "Unknown";
 }
+
+// explore genre
+
+
+// Map genre names to TMDB genre IDs
+const genreMap = {
+    superhero: 28, // Action (since TMDB doesn't have a "Superhero" genre)
+    drama: 18,
+    sitcom: 35, // Comedy as a substitute
+    thriller: 53,
+    comedy: 35,
+    fantasy: 14
+};
+
+
+// Function to fetch and display movies based on genre
+async function fetchMovieByGenre(genre) {
+    const genreId = genreMap[genre]; // Get TMDB genre ID
+
+    if (!genreId) {
+        console.error("Invalid genre:", genre);
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&with_genres=${genreId}`);
+        const data = await response.json();
+
+        const genreMoviesContainer = document.getElementById("genre-movies");
+        genreMoviesContainer.innerHTML = ""; // Clear previous movies
+
+        data.results.forEach(movie => {
+            if (movie.poster_path) {
+                const movieCard = document.createElement("div");
+                movieCard.classList.add("movie-card"); // Add styling class
+
+                movieCard.innerHTML = `
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                    <p><strong>${movie.title}</strong></p>
+                    <p>⭐ ${movie.vote_average}</p>
+                `;
+
+                genreMoviesContainer.appendChild(movieCard);
+            }
+        });
+
+    } catch (error) {
+        console.error("Error fetching movies by genre:", error);
+    }
+}
+
+// Event Listener for Genre Buttons
+document.querySelectorAll(".genre-btn").forEach(button => {
+    button.addEventListener("click", (event) => {
+        // Remove active class from all buttons
+        document.querySelectorAll(".genre-btn").forEach(btn => btn.classList.remove("active"));
+
+        // Add active class to clicked button
+        event.target.classList.add("active");
+
+        // Get the selected genre and fetch movies
+        const selectedGenre = event.target.dataset.genre;
+        fetchMovieByGenre(selectedGenre);
+    });
+});
+
+// Fetch default genre movies (Superhero) on page load
+fetchMovieByGenre("superhero");
+
+
+// watchlist
+// document.addEventListener("DOMContentLoaded", fetchWatchlist);
+
+// function addToWatchlist(movieId, movieTitle, posterPath) {
+//   let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+//   // Avoid duplicates
+//   if (!watchlist.some(movie => movie.id === movieId)) {
+//     watchlist.push({ id: movieId, title: movieTitle, poster: posterPath });
+//     localStorage.setItem("watchlist", JSON.stringify(watchlist));
+//   }
+// }
+
+// function fetchWatchlist() {
+//   const watchlistContainer = document.getElementById("watchlist");
+//   watchlistContainer.innerHTML = ""; // Clear previous entries
+
+//   let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+
+//   watchlist.forEach(movie => {
+//     const img = document.createElement("img");
+//     img.src = `https://image.tmdb.org/t/p/original${movie.poster}`;
+//     img.alt = movie.title;
+//     img.style.width = "150px"; 
+//     img.style.margin = "10px";
+
+//     watchlistContainer.appendChild(img);
+//   });
+// }
+
+// // Call this function when the page loads
+// fetchWatchlist();
 
 
 // user watch list and likes by fetching session id
