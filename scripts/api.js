@@ -1,12 +1,12 @@
 const movieApiKey = "bb62839"; // Your OMDb API key
 const movieTitle = "The Mandalorian"; // Change this to any movie you want
+const tmdbApiKey = "954e12387f34cb6be91a892fc28498d8"; // Replace with your actual API key
 
 async function fetchMoviePoster() {
   try {
     const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=${movieApiKey}`);
     const data = await response.json();
     console.log(data)
-    
     if (data.Poster) {
       // const highResPoster = data.Poster.rep0lace("SX300", "SX1080");
       const movieSlideshow = document.getElementById("movie-slideshow");
@@ -28,7 +28,6 @@ fetchMoviePoster();
 const companyIds = [213, 2, 3268, 1, 3, 7521, 420, 25, 20580, 4, 34, 33, 174]; // Add more IDs as needed
 
 companyIds.forEach(companyId => {
-  fetch(`https://api.themoviedb.org/3/company/${companyId}?api_key=${apiKey}`)
   fetch(`https://api.themoviedb.org/3/company/${companyId}?api_key=${tmdbApiKey}`)
     .then(response => response.json())
     .then(data => {
@@ -49,7 +48,6 @@ const continueWatchingMovieTitles = ["Guardians of the Galaxy", "The Last of Us"
   "Men in Black","Stranger Things","Fear Street"/*,"Deadpool","Wednesday"*/]; // Add more movies here
 
 continueWatchingMovieTitles.forEach(title => {
-  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(title)}`)
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbApiKey}&query=${encodeURIComponent(title)}`)
     .then(response => response.json())
     .then(data => {
@@ -92,14 +90,6 @@ continueWatchingMovieTitles.forEach(title => {
 //     })
 //     .catch(error => console.error("Error fetching company logo:", error));
 // });
-// const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
-// const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
-
-// popularMoviesIds.forEach(movieId => {
-//   fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
-//     .then(response => response.json())
-//     .then(data => {
-// const tmdbApiKey = "YOUR_API_KEY"; // Replace with your actual API key
 const popularMoviesIds = [118340, 100088, 315162]; // Example movie IDs (Guardians, Last of Us, Godzilla)
 
 popularMoviesIds.forEach(movieId => {
@@ -122,58 +112,6 @@ popularMoviesIds.forEach(movieId => {
     .catch(error => console.error("Error fetching movie poster:", error));
 });
 
-// recent releases
-const recentReleases = []
-
-fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
-  .then(response => response.json())
-  .then(data => {
-    const moviesContainer = document.getElementById("recent-releases");
-
-      data.results.forEach(movie => {
-        if (movie.poster_path) {
-          const movieCard = document.createElement("div");
-          movieCard.style.border = "1px solid #ccc";
-          // movieCard.style.padding = "10px";
-          movieCard.style.margin = "10px";
-          // movieCard.style.width = "200px";
-          // movieCard.style.width = "100%";
-          movieCard.style.borderRadius = "8px";
-          movieCard.style.backgroundColor = "#f9f9f9";
-          // movieCard.style.textAlign = "center";
-
-          // Movie Poster
-          const img = document.createElement("img");
-          img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-          img.alt = movie.title;
-          img.style.width = "100%";
-          img.style.borderRadius = "5px";
-
-          // Movie Title
-          const title = document.createElement("h4");
-          title.innerText = movie.title;
-
-          // Movie Rating
-          const rating = document.createElement("p");
-          rating.innerText = `⭐ Rating: ${movie.vote_average.toFixed(1)}`;
-
-          // Movie Release Date
-          const releaseDate = document.createElement("p");
-          releaseDate.innerText = `📅 Release: ${movie.release_date}`;
-
-          // Append elements to card
-          movieCard.appendChild(img);
-          movieCard.appendChild(title);
-          movieCard.appendChild(rating);
-          movieCard.appendChild(releaseDate);
-
-          // Append movie card to container
-          moviesContainer.appendChild(movieCard);
-        }
-      }
-    )
-  })
-;
 
 // recent releases
 fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&language=en-US&page=1`)
@@ -201,8 +139,6 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&lang
   })
   .catch(error => console.error("Error fetching recent movies:", error));
 
-
-// fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`)
 // converts genre IDs into genre names
 // function getGenreName(genreId) {
 //   const genres = {
@@ -278,7 +214,7 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&lang
 //     });
 // });
 
-// // Fetch default genre movies (Superhero) on page load
+// Fetch default genre movies (Superhero) on page load
 // fetchMovieByGenre("superhero");
 
 
@@ -694,10 +630,6 @@ fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdbApiKey}&lang
 
 
 
-// const apiKey = "bb62839"; // Your OMDb API key
-// const movieTitle = "The Mandalorian"; // Change this to any movie you want
-
-// fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=${apiKey}`)
 // const tmdbApiKey = "bb62839"; // Your OMDb API key
 // const movieTitle = "The Mandalorian"; // Change this to any movie you want
 
