@@ -6,7 +6,7 @@ async function fetchMoviePoster() {
   try {
     const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=${movieApiKey}`);
     const data = await response.json();
-    
+    console.log(data)
     if (data.Poster) {
       // const highResPoster = data.Poster.rep0lace("SX300", "SX1080");
       const movieSlideshow = document.getElementById("movie-slideshow");
